@@ -9,8 +9,30 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <h1 class="test">Testing all assets are connected</h1>
-    <h2 class="test">another Testing</h2>
+    <!-- static html elements. always on the page. -->
+    <!-- navbar for highscore and timer -->
+    <section class="navbar">
+      <div>
+        <span id="highscores">Highscore</span>
+      </div>
+      <div>Time Remaining: <span id="timer"></span></div>
+    </section>
+    <section class="intro">
+      <h1 id="questions">Welcome to the Quiz</h1>
+      <h2 id="description">description of the Quiz here</h2>
+      <button class="start-button">Start Quiz!</button>
+    </section>
+    <section class="start-quiz invisible">
+      <h2>Question 1</h2>
+      <ol>
+        <li><button>Option 1</button></li>
+        <li><button>Option 2</button></li>
+        <li><button>Option 3</button></li>
+        <li><button>Option 4</button></li>
+      </ol>
+    </section>
+    <section class="input-initial invisible"></section>
+    <section class="highscore invisible"></section>
     <script src="./assets/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,9 @@
+Timed quiz on js fundamentals that stores high scores
+
+start button click => timer starts and i am presented with a question.
+answer question => presented with another question
+incorrect answer => time subtracted from the clock
+when all questions answered / timer reaches zero => game ends
+when game ends => save initials and score (local.Storage) 
+---------------------------------------------------------
+everything is connected.

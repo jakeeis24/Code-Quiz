@@ -1,3 +1,33 @@
-h1 {
-  background: red;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background: darkgrey;
+}
+.navbar {
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.container #questions {
+  font-size: 4rem;
+}
+.container #description {
+  font-size: 2rem;
+}
+.buttons {
+  display: block;
+  text-align: center;
+}
+.invisible {
+  display: none;
 }
