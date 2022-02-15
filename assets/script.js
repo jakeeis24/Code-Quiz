@@ -33,7 +33,7 @@ var questionArray = [
     solution: "Option 4",
   },
 ];
-var timeRemaining = questionArray.length * 15;
+var timeRemaining = questionArray.length * 10;
 startButton.addEventListener("click", function () {
   intro.classList.add("invisible");
   startQuiz.classList.remove("invisible");
