@@ -12,17 +12,21 @@ html {
   justify-content: space-between;
   padding: 0.5rem;
 }
-.container {
+.intro {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
 }
-.container #questions {
+.intro #questions {
   font-size: 4rem;
 }
-.container #description {
+.intro #description {
   font-size: 2rem;
+}
+.start-button {
+  background-color: red;
+  margin: 1rem auto;
 }
 .buttons {
   display: block;
