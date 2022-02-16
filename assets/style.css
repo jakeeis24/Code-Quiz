@@ -13,7 +13,7 @@ html {
   padding: 0.5rem;
 }
 .intro {
-  display: flex;
+  display: block;
   justify-content: center;
   flex-direction: column;
   text-align: center;

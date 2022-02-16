@@ -2,10 +2,14 @@
 var startButton = document.querySelector(".start-button");
 var intro = document.querySelector(".intro");
 var startQuiz = document.querySelector(".start-quiz");
-var inputInit = document.querySelector(".input-initial");
-var highscore = document.querySelector(".highscore");
+var userInit = document.querySelector(".user-initials");
+var highscore = document.querySelector("#highscore");
 var timer = document.querySelector("#timer");
 var clockId = null;
+var ans1 = document.querySelector("#a1");
+var ans2 = document.querySelector("#a2");
+var ans3 = document.querySelector("#a3");
+var ans4 = document.querySelector("#a4");
 //starting index position for first question
 var index = 0;
 //questions and answers
@@ -45,51 +49,37 @@ var questionArray = [
 //number of questions *10 will give the time allotted for the quiz
 var timeRemaining = questionArray.length * 10;
 //Once user clicks start button, hide the startup page and start the quiz and the timer
-startButton.addEventListener("click", function () {
-  intro.classList.add("invisible");
-  startQuiz.classList.remove("invisible");
-  showQuestions();
+
+startQuiz.style.display = "none";
+userInit.style.display = "none";
+highscore.style.display = "none";
+
+startButton.addEventListener("click", showQuestions);
+//start quiz -- display questions and options from the questions array and hide the intro page
+function showQuestions() {
+  intro.style.display = "none";
+  startQuiz.style.display = "block";
+  userInit.style.display = "none";
+  highscore.style.display = "none";
+  populateFields();
   clockId = setInterval(countdown, 1000);
-});
+}
 //Countdown timer / 1second interval
 function countdown() {
   timer.textContent = timeRemaining;
   timeRemaining = timeRemaining - 1;
+  //NEED TO ADD PENALTY AND REWARD
 }
-
+//function for displaying questions and answers with buttons
+function populateFields() {
+  var question = document.querySelector("#question-prompt");
+  var answers = document.querySelector(".ans-btn");
+  question.textContent = questionArray[index].title;
+  answers.textContent = questionArray[index].options[index];
+}
 //endQuiz function to hide questions array, make highscore visible and log scores to localStorage with a prompt to enter initials
-function endQuiz() {
-  //remove quiz from the page
-  startQuiz.classList.add("invisible");
-  //add highscores to the page
-  highscore.classList.remove("invisible");
-}
+// function endQuiz() {}  //MAKE END FUNCTION
 
-//display questions and options from the questions array
-function showQuestions() {
-  startQuiz.innerHTML = `
-     <h1>${questionArray[index].title}</h1>
-      <ol>
-        <li><button class = "answer-btn">${questionArray[index].options[0]}</button></li>
-        <li><button class = "answer-btn">${questionArray[index].options[1]}</button></li>
-        <li><button class = "answer-btn">${questionArray[index].options[2]}</button></li>
-        <li><button class = "answer-btn">${questionArray[index].options[3]}</button></li>
-      </ol>
-    `;
-  var button = document.querySelectorAll(".answer-btn");
-  console.log(button);
-  //when user clicks one of the answers, the next question will be displayed
-  for (let i = 0; i < button.length; i++) {
-    button[i].addEventListener("click", function () {
-      showQuestions();
-      index = index + 1;
+//when user clicks one of the answers, the next question will be displayed
 
-      //   if ((index = 5)) {
-      //     endQuiz();
-      //   }
-    });
-
-    //after we iterate through the entire question array, end the game
-  }
-}
-endQuiz();
+//after we iterate through the entire question array, end the game
