@@ -1,8 +1,10 @@
 //variable declarations
 var startButton = document.querySelector(".start-button");
+var submitButton = document.querySelector("#name-btn");
 var intro = document.querySelector(".intro");
 var startQuiz = document.querySelector(".start-quiz");
 var userInit = document.querySelector(".user-initials");
+var userInitials = document.querySelector("#initials");
 var highscore = document.querySelector("#highscore");
 var timer = document.querySelector("#timer");
 var clockId = null;
@@ -90,8 +92,6 @@ function countdown() {
     timer.textContent = "0";
     endGame();
   }
-
-  //NEED TO ADD PENALTY AND REWARD
 }
 
 //function for displaying questions and answers with buttons
@@ -119,9 +119,17 @@ function populateFields() {
 function endGame() {
   intro.style.display = "none";
   startQuiz.style.display = "none";
-  userInit.style.display = "block";
-  highscore.style.display = "none";
+  userInit.style.display = "none";
+  highscore.style.display = "block";
   console.log(userScore);
+  function storeInitials(event) {
+    event.preventDefault();
+    var initValue = userInitials;
+    var initScore = userScore;
+    document.querySelector("#initials").textContent = initValue;
+    document.querySelector("#score").textContent = initScore;
+  }
+  submitButton.addEventListener("click", storeInitials);
 }
 
 //when user clicks one of the answers, the next question will be displayed

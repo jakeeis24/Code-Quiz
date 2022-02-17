@@ -36,6 +36,8 @@ h2 {
 .start-button {
   background-color: red;
   margin: 1rem auto;
+  padding: 2rem;
+  font-size: 2rem;
 }
 .start-button:hover {
   background-color: aliceblue;
@@ -43,6 +45,8 @@ h2 {
 .ans-btn {
   background-color: red;
   margin: 1rem auto;
+  padding: 2rem;
+  font-size: 2rem;
 }
 .ans-btn:hover {
   background-color: aliceblue;
@@ -53,4 +57,22 @@ h2 {
 }
 .invisible {
   display: none;
+}
+#question-prompt {
+  font-size: 4rem;
+}
+#answers {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+#finished {
+  font-size: 3rem;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.sub-btn-holder {
+  text-align: center;
+}
+.sub-btn {
+  padding: 1rem;
 }

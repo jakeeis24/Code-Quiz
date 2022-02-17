@@ -43,12 +43,25 @@
       <!-- scores page -->
       <section id="highscore">
         <div>
-          <h1>Finished!</h1>
+          <h2 id="finished">Finished!</h2>
+          <h2>Your score is: <span id="score"></span></h2>
           <form>
-            <button type="submit" class="sub-btn" id="name-btn">
-              Submit initials to track your score!
-            </button>
+            <div class="label">
+              <label for="initials">Initials:</label>
+              <input
+                type="text"
+                id="initials"
+                name="initials"
+                placeholder="initials here!"
+              />
+            </div>
+            <div class="sub-btn-holder">
+              <button type="submit" class="sub-btn" id="name-btn">
+                Submit initials to track your score!
+              </button>
+            </div>
           </form>
+
           <span id="user-score"></span>
           <span id="user-initials"></span>
         </div>
