@@ -6,6 +6,7 @@ var userInit = document.querySelector(".user-initials");
 var highscore = document.querySelector("#highscore");
 var timer = document.querySelector("#timer");
 var clockId = null;
+userScore = 0;
 var ans1 = document.querySelector("#a1");
 var ans2 = document.querySelector("#a2");
 var ans3 = document.querySelector("#a3");
@@ -53,10 +54,16 @@ var questionArray = [
 
     solution: "Denver",
   },
+  //added blank array to prevent error message from popping up once the Colorado question is asked.
+  {
+    title: "blank",
+    answers: "blank",
+    solution: "blank",
+  },
 ];
 
 //number of questions *10 will give the time allotted for the quiz
-var timeRemaining = questionArray.length * 10;
+var timeRemaining = questionArray.length * 5;
 //On page load, hide everything but the intro page.
 
 startQuiz.style.display = "none";
@@ -78,8 +85,15 @@ function showQuestions() {
 function countdown() {
   timer.textContent = timeRemaining;
   timeRemaining = timeRemaining - 1;
+
+  if (timeRemaining <= 0) {
+    timer.textContent = "0";
+    endGame();
+  }
+
   //NEED TO ADD PENALTY AND REWARD
 }
+
 //function for displaying questions and answers with buttons
 function populateFields() {
   var question = document.querySelector("#question-prompt");
@@ -95,18 +109,20 @@ function populateFields() {
   }
 
   qIndex++;
-  if (qIndex > 3) {
-    console.log("gg");
+  //after we iterate through the entire question array, end the game
+  if (qIndex === 6) {
+    endGame();
   }
 }
+
+//endQuiz function to hide questions array, make highscore visible and log scores to localStorage with a prompt to enter initials
 function endGame() {
   intro.style.display = "none";
   startQuiz.style.display = "none";
   userInit.style.display = "block";
   highscore.style.display = "none";
+  console.log(userScore);
 }
-//endQuiz function to hide questions array, make highscore visible and log scores to localStorage with a prompt to enter initials
-// function endQuiz() {}  //MAKE END FUNCTION
 
 //when user clicks one of the answers, the next question will be displayed
 function userPick() {
@@ -115,9 +131,11 @@ function userPick() {
     var correctChoice = questionArray[qIndex - 1].solution;
     if (userChoice === correctChoice) {
       timeRemaining += 10;
+      userScore += 1;
       populateFields();
     } else {
       timeRemaining -= 10;
+      userScore -= 1;
       populateFields();
     }
   });
@@ -126,9 +144,11 @@ function userPick() {
     var correctChoice = questionArray[qIndex - 1].solution;
     if (userChoice === correctChoice) {
       timeRemaining += 10;
+      userScore += 1;
       populateFields();
     } else {
       timeRemaining -= 10;
+      userScore -= 1;
       populateFields();
     }
   });
@@ -137,9 +157,11 @@ function userPick() {
     var correctChoice = questionArray[qIndex - 1].solution;
     if (userChoice === correctChoice) {
       timeRemaining += 10;
+      userScore += 1;
       populateFields();
     } else {
       timeRemaining -= 10;
+      userScore -= 1;
       populateFields();
     }
   });
@@ -148,12 +170,12 @@ function userPick() {
     var correctChoice = questionArray[qIndex - 1].solution;
     if (userChoice === correctChoice) {
       timeRemaining += 10;
+      userScore += 1;
       populateFields();
     } else {
       timeRemaining -= 10;
+      userScore -= 1;
       populateFields();
     }
   });
 }
-
-//after we iterate through the entire question array, end the game
