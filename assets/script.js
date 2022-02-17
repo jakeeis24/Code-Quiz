@@ -128,6 +128,8 @@ function endGame() {
     var initScore = userScore;
     document.querySelector("#initials").textContent = initValue;
     document.querySelector("#score").textContent = initScore;
+    localStorage.setItem("initials", initValue);
+    localStorage.setItem("score", userScore);
   }
   submitButton.addEventListener("click", storeInitials);
 }
