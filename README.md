@@ -8,7 +8,7 @@ The quiz functions as it should through the questions and into the submit form. 
 
 # Screenshot
 
-![alt text](./images/Screenshot_2022-02-16_204745.jpg
+![alt text](./images/Screenshot-codeQuiz.jpg)
 
 # Link to Deployed Application
 
