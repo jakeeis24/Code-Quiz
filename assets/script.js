@@ -11,44 +11,53 @@ var ans2 = document.querySelector("#a2");
 var ans3 = document.querySelector("#a3");
 var ans4 = document.querySelector("#a4");
 //starting index position for first question
-var index = 0;
+var qIndex = 0;
 //questions and answers
 var questionArray = [
   {
     title: "What does JS stand for?",
-    options: ["JavaScript", "JustSign", "JoeSmith", "JohnScena"],
+    answers: ["JoeSmith", "JavaScript", "JohnScena", "JustSign"],
+
     solution: "JavaScript",
   },
   {
     title: "What does CSS stand for?",
-    options: [
+
+    answers: [
       "Cascading Software Style",
       "Coffee Sugar Sweetcream",
       "Cascading Style Sheets",
       "Carry Some Salt",
     ],
+
     solution: "Cascading Style Sheets",
   },
   {
     title: "Where do we insert links to CSS in the HTML doc?",
-    options: ["Body", "Head", "Main", "Section"],
+
+    answers: ["Body", "Head", "Main", "Section"],
+
     solution: "Head",
   },
   {
     title: "Which languages have we implemented to make this quiz?",
-    options: ["HTML", "CSS", "JS", "All of the Above"],
+
+    answers: ["HTML", "CSS", "JS", "All of the Above"],
+
     solution: "All of the Above",
   },
   {
     title: "What is the capital of Colorado?",
-    options: ["Colorado Springs", "Fort Collins", "Denver", "Boulder"],
+
+    answers: ["Colorado Springs", "Fort Collins", "Denver", "Boulder"],
+
     solution: "Denver",
   },
 ];
 
 //number of questions *10 will give the time allotted for the quiz
 var timeRemaining = questionArray.length * 10;
-//Once user clicks start button, hide the startup page and start the quiz and the timer
+//On page load, hide everything but the intro page.
 
 startQuiz.style.display = "none";
 userInit.style.display = "none";
@@ -63,6 +72,7 @@ function showQuestions() {
   highscore.style.display = "none";
   populateFields();
   clockId = setInterval(countdown, 1000);
+  userPick();
 }
 //Countdown timer / 1second interval
 function countdown() {
@@ -73,13 +83,77 @@ function countdown() {
 //function for displaying questions and answers with buttons
 function populateFields() {
   var question = document.querySelector("#question-prompt");
-  var answers = document.querySelector(".ans-btn");
-  question.textContent = questionArray[index].title;
-  answers.textContent = questionArray[index].options[index];
+  var options = document.querySelector("#answers");
+
+  question.textContent = "Question " + (qIndex + 1);
+  options.textContent = questionArray[qIndex].title;
+  //   console.log(title);
+  for (i = 0; i < 4; i++) {
+    var button = document.querySelector("#a" + (i + 1));
+    console.log(button);
+    button.textContent = questionArray[qIndex].answers[i];
+  }
+
+  qIndex++;
+  if (qIndex > 3) {
+    console.log("gg");
+  }
+}
+function endGame() {
+  intro.style.display = "none";
+  startQuiz.style.display = "none";
+  userInit.style.display = "block";
+  highscore.style.display = "none";
 }
 //endQuiz function to hide questions array, make highscore visible and log scores to localStorage with a prompt to enter initials
 // function endQuiz() {}  //MAKE END FUNCTION
 
 //when user clicks one of the answers, the next question will be displayed
+function userPick() {
+  ans1.addEventListener("click", function () {
+    var userChoice = this.innerHTML;
+    var correctChoice = questionArray[qIndex - 1].solution;
+    if (userChoice === correctChoice) {
+      timeRemaining += 10;
+      populateFields();
+    } else {
+      timeRemaining -= 10;
+      populateFields();
+    }
+  });
+  ans2.addEventListener("click", function () {
+    var userChoice = this.innerHTML;
+    var correctChoice = questionArray[qIndex - 1].solution;
+    if (userChoice === correctChoice) {
+      timeRemaining += 10;
+      populateFields();
+    } else {
+      timeRemaining -= 10;
+      populateFields();
+    }
+  });
+  ans3.addEventListener("click", function () {
+    var userChoice = this.innerHTML;
+    var correctChoice = questionArray[qIndex - 1].solution;
+    if (userChoice === correctChoice) {
+      timeRemaining += 10;
+      populateFields();
+    } else {
+      timeRemaining -= 10;
+      populateFields();
+    }
+  });
+  ans4.addEventListener("click", function () {
+    var userChoice = this.innerHTML;
+    var correctChoice = questionArray[qIndex - 1].solution;
+    if (userChoice === correctChoice) {
+      timeRemaining += 10;
+      populateFields();
+    } else {
+      timeRemaining -= 10;
+      populateFields();
+    }
+  });
+}
 
 //after we iterate through the entire question array, end the game

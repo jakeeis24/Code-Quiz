@@ -6,6 +6,9 @@ html {
   font-size: 62.5%;
   background: darkgrey;
 }
+h2 {
+  font-size: 2rem;
+}
 .navbar {
   font-size: 3rem;
   display: flex;
@@ -13,6 +16,12 @@ html {
   padding: 0.5rem;
 }
 .intro {
+  display: block;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.start-quiz {
   display: block;
   justify-content: center;
   flex-direction: column;
@@ -27,6 +36,16 @@ html {
 .start-button {
   background-color: red;
   margin: 1rem auto;
+}
+.start-button:hover {
+  background-color: aliceblue;
+}
+.ans-btn {
+  background-color: red;
+  margin: 1rem auto;
+}
+.ans-btn:hover {
+  background-color: aliceblue;
 }
 .buttons {
   display: block;
